@@ -1,0 +1,23 @@
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Date: Fri, 16 Jun 2023 00:47:38 GMT
+Content-Length: 297
+Connection: close
+
+{
+    "as": "[Redacted]",
+    "city": "[Redacted]]",
+    "country": "[Redacted]]",
+    "countryCode": "[Redacted]",
+    "isp": "[Redacted]",
+    "lat": 0,
+    "lon": 0,
+    "org": "[Redacted]",
+    "query": "[Redacted]",
+    "region": "[Redacted]",
+    "regionName": "[Redacted]",
+    "status": "success",
+    "timezone": "[Redacted]",
+    "zip": "[Redacted]"
+}
